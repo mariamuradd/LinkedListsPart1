@@ -47,7 +47,7 @@ public class GroceryLinkedList {
         }
     }
 
-    // this will insert a node at a specific index point
+    // this will insert a node at a specified index point
     public void insert(int index, FoodNode node){
         if(index == 0){
             insertAtStart(node);
