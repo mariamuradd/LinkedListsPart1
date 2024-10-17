@@ -1,41 +1,73 @@
 /*
  * Name: Maria Murad
- * Project Name: "Harmony in Geometry - Processing in Java/VSCode"
- * Date: September 3rd, 2024
- * Description: Project for Coding III - this project explores the interplay of various geometric shapes to create a visually appealing and balanced composition
+ * Project Name: "Linked Lists I"
+ * Date: October 17th, 2024
+ * Description: This class shows the implementation of how a linked list works. It covers operations from adding, removing and finding items on the list.
  */
 package com.processing.example;
 
-import processing.core.*;
-
-public class Main extends PApplet {
-    //sets up processing and prints the hello world message to the console
+public class Main {
     public static void main(String[] args) {
-        PApplet.main("com.processing.example.Main");
-        System.out.println("Hello world!");
-    }
+        // GroceryLinkedList created
+        GroceryLinkedList list = new GroceryLinkedList();
+        // Test 1: Add items to the list and print the list
+        System.out.println("Test 1");
+        list.insertAtEnd(new FoodNode("milk"));
+        list.insertAtEnd(new FoodNode("bananas"));
+        list.insertAtEnd(new FoodNode("ice cream"));
+        list.insertAtEnd(new FoodNode("spinach"));
+        list.insertAtEnd(new FoodNode("chicken"));
+        list.print();
+        System.out.println("---------------------");
 
-    //sets up the size of the window
-    public void settings() {
-    
-        size(500, 500);
-    }
+        // Test 2: Remove ice cream and print the list
+        System.out.println("Test 2");
+        list.remove("ice cream");
+        list.print();
+        System.out.println("---------------------");
 
-    // changes background color to dark green
-    public void setup() {
-        background(34, 55, 16);
-    }
+        // Test 3: Remove chicken and print the list
+        System.out.println("Test 3");
+        list.remove("chicken");
+        list.print();
+        System.out.println("---------------------");
 
-    // builds a harmonious composition with geometric shapes
-    public void draw() {
-        //below are in-built processing commands that can be put together to create a shape
-        ellipse(200, 200, 350, 350);
-        rect(120, 120, 160, 160);
-        triangle(150, 280, 250, 120, 350, 280);
-        quad(180, 160, 280, 120, 240, 240, 140, 280);
-        square(170, 170, 60);
-        arc(200, 200, 250, 250, 0, PI + QUARTER_PI, CHORD);
+        // Test 4: Find spinach in the list. If not found, add it to the end.
+        System.out.println("Test 4");
+        int spinachIndex = list.find("spinach");
+        if (spinachIndex != -1) {
+            System.out.println("Spinach is number " + (spinachIndex + 1) + " in the grocery list.");
+        } else {
+            list.insertAtEnd(new FoodNode("spinach"));
+            System.out.println("Spinach not found. Added it to the end of the list.");
+        }
+        list.print();
+        System.out.println("---------------------");
+
+        // Test 5: Find eggs in the list. If not found, add it to the end.
+        System.out.println("Test 5");
+        int eggsIndex = list.find("eggs");
+        if (eggsIndex != -1) {
+            System.out.println("Eggs are number " + (eggsIndex + 1) + " in the grocery list.");
+        } else {
+            list.insertAtEnd(new FoodNode("eggs"));
+            System.out.println("Eggs not found. Added them to the end of the list.");
+        }
+        list.print();
+        System.out.println("---------------------");
+
+        // Test 6: Add onions at the beginning of the list and print
+        System.out.println("Test 6");
+        list.insertAtStart(new FoodNode("onions"));
+        list.print();
+        System.out.println("---------------------");
+
+        // Test 7: Add strawberries after bananas and print
+        System.out.println("Test 7");
+        list.insert("bananas", new FoodNode("strawberries"));
+        list.print();
+        System.out.println("---------------------");
+    }
         
-    }
 }
 
